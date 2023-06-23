@@ -12,7 +12,7 @@ RUN \
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   python3 -m pip install --break-system-packages \
-    bikeshed==3.12.1 \
+    bikeshed==3.13.1 \
     tree_sitter==0.20.1 && \
   npx --yes -- @mermaid-js/mermaid-cli@9.1.4 --version && \
   npx --yes -- tree-sitter-cli@0.20.7 --version && \
