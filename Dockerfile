@@ -31,6 +31,10 @@ RUN \
   npx --yes -- @mermaid-js/mermaid-cli@9.1.4 --version && \
   npm install -g tree-sitter-cli@0.20.7 && \
   npx --yes -- tree-sitter-cli@0.20.7 --version && \
+  mkdir /mermaid && \
+  echo '{ \
+    "args": ["--no-sandbox"]\
+  }' > /mermaid/puppeteer-config.json && \
   mkdir /grammar && \
   echo '{ \
     "name": "tree-sitter-wgsl", \
