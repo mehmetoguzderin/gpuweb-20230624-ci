@@ -33,6 +33,7 @@ jobs:
       
       - name: Prepare container
         run: |
+          find ./ -path /proc -prune -o -path /etc -prune -o -path /sys -prune -o -path /usr -prune -o -path /dev -prune -o -path /var -prune -o -exec chown pptruser:pptruser {} \;
           sudo -u pptruser -s <<EOF
           cp -r /grammar ./wgsl/
           git init
