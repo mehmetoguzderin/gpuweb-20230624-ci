@@ -9,9 +9,12 @@ import unicodedata
 import subprocess
 import sys
 
-files = subprocess.run(
-    ["git", "ls-files"], check=True, capture_output=True
-).stdout.splitlines()
+try:
+    files = subprocess.run(
+        ["git", "ls-files"], check=True, capture_output=True
+    ).stdout.splitlines()
+except subprocess.CalledProcessError as e:
+    print("git ls-files Exception: ", e.output)
 
 fix = "--fix" in [unicodedata.normalize("NFKC", i) for i in sys.argv]
 
