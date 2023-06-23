@@ -9,8 +9,10 @@ name: build-validate-publish
 
 on:
   pull_request:
+    paths-ignore: [ "Dockerfile" ]
   push:
     branches: [main]
+    paths-ignore: [ "Dockerfile" ]
   # Allows admins to trigger the workflow manually from GitHub's UI.
   workflow_dispatch:
 
@@ -19,15 +21,23 @@ jobs:
   # step to publish additional files anyway, so we use that instead of making
   # many separate gh-pages commits (one per bikeshed file + one for extras).
   build-validate-publish:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}:main
+      credentials:
+         username: ${{ github.actor }}
+         password: ${{ secrets.github_token }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      
+      - name: Extract cache
+        run: |
+          cp -r /grammar ./wgsl/
 
       - name: Build and validate
         run: |
           export PATH="$(python3 -m site --user-base)/bin:${PATH}"
-          sh tools/install-dependencies.sh bikeshed wgsl diagrams
           BIKESHED_DISALLOW_ONLINE=1 REQUIRE_DIAGRAM_GENERATION=1 make -j out
           # Ensure diagrams didn't change after regeneration
           sh tools/check-repo-clean.sh

@@ -11,6 +11,7 @@ on:
     # Runs on all paths because otherwise we'd need a stub to be able to make
     # the check required. See:
     # https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks
+    paths-ignore: [ "Dockerfile" ]
   push:
     branches: [main]
     paths:
@@ -20,9 +21,9 @@ on:
 
 jobs:
   publish-TR-wgsl:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: w3c/spec-prod@v2
         with:
           TOOLCHAIN: bikeshed
