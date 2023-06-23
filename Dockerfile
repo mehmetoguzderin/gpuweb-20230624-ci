@@ -14,7 +14,9 @@ RUN \
   python3 -m pip install --break-system-packages \
     bikeshed==3.13.1 \
     tree_sitter==0.20.1 && \
+  npm install -g @mermaid-js/mermaid-cli@9.1.4 && \
   npx --yes -- @mermaid-js/mermaid-cli@9.1.4 --version && \
+  npm install -g tree-sitter-cli@0.20.7 && \
   npx --yes -- tree-sitter-cli@0.20.7 --version && \
   mkdir /grammar && \
   echo '{ \
