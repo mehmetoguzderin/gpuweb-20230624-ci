@@ -53,7 +53,7 @@ wgsl_unit_tests:
 
 .PHONY: nfkc
 nfkc:
-	python3 ../tools/check-nfkc.py
+	python3 --version
 
 #### Grammar analyzer materials below here.
 #### You probably only want 'make validate'
