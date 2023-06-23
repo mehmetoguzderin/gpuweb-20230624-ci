@@ -38,6 +38,7 @@ jobs:
         run: |
           find ./ -path /proc -prune -o -path /etc -prune -o -path /sys -prune -o -path /usr -prune -o -path /dev -prune -o -path /var -prune -o -exec chown pptruser:pptruser {} \;
           sudo -u pptruser -s <<EOF
+          git config --global --add safe.directory '*'
           cp -r /grammar ./wgsl/
 
       - name: Build and validate
