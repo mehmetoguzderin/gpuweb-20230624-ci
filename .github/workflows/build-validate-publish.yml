@@ -37,13 +37,12 @@ jobs:
       - name: Prepare container
         run: |
           find ./ -path /proc -prune -o -path /etc -prune -o -path /sys -prune -o -path /usr -prune -o -path /dev -prune -o -path /var -prune -o -exec chown pptruser:pptruser {} \;
-          sudo -u pptruser -s <<EOF
-          git config --global --add safe.directory '*'
+          # sudo -u pptruser -s <<EOF
           cp -r /grammar ./wgsl/
 
       - name: Build and validate
         run: |
-          sudo -u pptruser -s <<EOF
+          # sudo -u pptruser -s <<EOF
           export PATH="$(python3 -m site --user-base)/bin:${PATH}"
           BIKESHED_DISALLOW_ONLINE=1 REQUIRE_DIAGRAM_GENERATION=1 make -j out
           # Ensure diagrams didn't change after regeneration
