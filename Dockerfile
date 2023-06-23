@@ -7,7 +7,7 @@ RUN \
   apt update -y && \
   apt install -y locales && \
   locale-gen en_US.UTF-8 && \
-  apt install -y python3-full python3-pip nodejs npm
+  apt install -y python3-full python3-pip nodejs npm git
 
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
