@@ -13,6 +13,7 @@ RUN \
     nodejs \
     npm \
     git \
+    sudo \
     libgtk-3-dev \
     libnotify-dev \
     libgconf-2-4 \
@@ -51,5 +52,3 @@ RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser && \
   find / -path /proc -prune -o -path /etc -prune -o -path /sys -prune -o -path /usr -prune -o -path /dev -prune -o -path /var -prune -o -exec chown pptruser:pptruser {} \;
-
-USER pptruser

@@ -33,11 +33,13 @@ jobs:
       
       - name: Prepare container
         run: |
+          sudo -u pptruser -s <<EOF
           cp -r /grammar ./wgsl/
           git init
 
       - name: Build and validate
         run: |
+          sudo -u pptruser -s <<EOF
           export PATH="$(python3 -m site --user-base)/bin:${PATH}"
           BIKESHED_DISALLOW_ONLINE=1 REQUIRE_DIAGRAM_GENERATION=1 make -j out
           # Ensure diagrams didn't change after regeneration
