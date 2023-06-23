@@ -36,6 +36,7 @@ Assume Explicit For: yes
 </pre>
 
 <pre class=link-defaults>
+spec:webidl; type:exception; text:TypeError
 </pre>
 <pre class=ignored-specs>
 spec:resource-hints;
