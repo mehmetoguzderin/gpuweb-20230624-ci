@@ -50,6 +50,6 @@ RUN \
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser && \
-  chown -R pptruser:pptruser / && chown -R pptruser:pptruser /*
+  find / -path /proc -prune -o -path /etc -prune -o -exec chown pptruser:pptruser {} \;
 
 USER pptruser
