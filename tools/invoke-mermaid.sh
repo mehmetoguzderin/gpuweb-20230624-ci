@@ -6,7 +6,6 @@ cfg_file=$(dirname "$0")/mermaid.json
 # disable the prompt to install new packages (and avoid npx racing with itself).
 # Use tools/install-dependencies.sh to install the package explicitly.
 if [ -f "/mermaid/puppeteer-config.json" ]; then
-    echo 'With puppeteer config'
     npx --no -- @mermaid-js/mermaid-cli@9.1.4 --backgroundColor black -p /mermaid/puppeteer-config.json --configFile "$cfg_file" "$@"
 else
     npx --no -- @mermaid-js/mermaid-cli@9.1.4 --backgroundColor black --configFile "$cfg_file" "$@"
