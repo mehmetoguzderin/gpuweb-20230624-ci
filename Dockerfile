@@ -46,3 +46,10 @@ RUN \
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   bikeshed update
+
+RUN \
+  export DEBIAN_FRONTEND=noninteractive && \
+  groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser && \
+  chown -R pptruser:pptruser / && chown -R pptruser:pptruser /*
+
+USER pptruser
