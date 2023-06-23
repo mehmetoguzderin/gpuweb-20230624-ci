@@ -31,9 +31,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Extract cache
+      - name: Prepare container
         run: |
           cp -r /grammar ./wgsl/
+          git init
 
       - name: Build and validate
         run: |

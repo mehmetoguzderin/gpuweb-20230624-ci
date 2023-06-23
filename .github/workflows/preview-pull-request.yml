@@ -51,9 +51,10 @@ jobs:
         run: |
           if curl -f -s -o /dev/null https://github.com/${{ github.event.workflow_run.repository.owner.login }}/$PR_PREVIEW_REPO ; then echo "Previews will live in https://${{ github.event.workflow_run.repository.owner.login }}.github.io/$PR_PREVIEW_REPO/gpuweb/gpuweb/$PR/" ; echo "PR_PREVIEW_REPO=$PR_PREVIEW_REPO" >> $GITHUB_ENV ; else exit 0 ; fi
       
-      - name: Extract cache
+      - name: Prepare container
         run: |
           cp -r /grammar ./wgsl/
+          git init
 
       # Builds Bikeshed specs
       - name: Build Bikeshed
