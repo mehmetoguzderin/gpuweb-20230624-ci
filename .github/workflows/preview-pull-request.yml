@@ -16,6 +16,9 @@ jobs:
       credentials:
          username: ${{ github.actor }}
          password: ${{ secrets.github_token }}
+    defaults:
+      run:
+        shell: bash
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

@@ -27,6 +27,9 @@ jobs:
       credentials:
          username: ${{ github.actor }}
          password: ${{ secrets.github_token }}
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +39,6 @@ jobs:
           find ./ -path /proc -prune -o -path /etc -prune -o -path /sys -prune -o -path /usr -prune -o -path /dev -prune -o -path /var -prune -o -exec chown pptruser:pptruser {} \;
           sudo -u pptruser -s <<EOF
           cp -r /grammar ./wgsl/
-          git init
 
       - name: Build and validate
         run: |
