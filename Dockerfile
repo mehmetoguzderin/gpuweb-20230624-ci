@@ -14,6 +14,7 @@ RUN \
     nodejs \
     npm \
     git \
+    rsync \
     sudo \
     libgtk-3-dev \
     libnotify-dev \
